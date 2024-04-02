@@ -21,33 +21,42 @@ body {
 
 header {
   margin-top: 120px;
-  margin-bottom: 80px;
+  margin-bottom: 0;
+  background-color: antiquewhite;
 }
 h2 {
-  width: 75%;
+  margin-bottom: 0;
+  display: inline-block;
+  padding-left: 5px;
   text-align: right;
-  border-bottom: 3px solid var(--dark-color-light);
-  line-height: 0.1em;
-  margin: 10px 0 20px;
+  font-size: 73px !important;
+  letter-spacing: 8px;
+  color: var(--dark-color-light);
 }
-
-h2 span {
-  background-color: var(--white-color);
-
-  padding: 0 10px;
-  /* white-space: 3px; */
-  font-size: 73px;
-  font-style: italic;
-  letter-spacing: 7px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+.sep {
+  height: 2px;
+  width: 75%;
+  display: inline-block;
+  text-align: left;
+  background-color: var(--dark-color-light);
 }
 
 main {
-  background-color: #15131382;
-  height: 500px;
+  position: relative;
+  z-index: 0;
+  /* padding-top: 0; */
+  background-color: #f0f1f3;
 }
-
+main::before {
+  background-color: var(--dark-color-light);
+  content: "";
+  height: 70%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  top: 0;
+  margin-bottom: 4rem;
+}
 /* navbar leftside */
 ul {
   list-style-type: none;
@@ -80,19 +89,17 @@ li a:hover {
 
 /* Fetch Page */
 .fetch {
+  margin-top: 0;
   padding: 15px;
   background-color: var(--white-color);
-  width: 100%;
   /* border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' width='11' height='11'  ><g fill='%23489fe2'><rect width='1' height='5'/><rect y='6' width='1' height='5'/><rect x='10' y='6' width='1' height='5'/><rect x='10' width='1' height='5'/><rect width='5' height='1'/><rect y='10' width='5' height='1'/><rect x='6' y='10' width='5' height='1'/><rect x='6' width='5' height='1'/></g></svg>")
     5; */
-  display: block;
-  /* overflow-wrap: break-word; */
   /* max-width: 100%; */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  /* word-wrap: break-word;
+  overflow-wrap: break-word; */
   border-radius: 3px;
   border: 2px solid #000;
-  margin-top: -30px;
+  /* margin-top: -30px; */
 }
 
 .fetch .lorem-text {
@@ -100,31 +107,6 @@ li a:hover {
   overflow-wrap: break-word;
   max-width: 100%;
   word-wrap: break-word;
-
-  /* font-family: "georgia"; */
-
-  /* border-radius: 5px;
-  background: linear-gradient(
-        to right,
-        var(--dark-color-light) 3px,
-        transparent 3px
-      )
-      0 0,
-    linear-gradient(to right, var(--dark-color-light) 3px, transparent 4px) 0
-      100%,
-    linear-gradient(to left, var(--dark-color-light) 3px, transparent 3px) 100%
-      0,
-    linear-gradient(to left, var(--dark-color-light) 3px, transparent 3px) 100%
-      100%,
-    linear-gradient(to bottom, var(--dark-color-light) 3px, transparent 3px) 0 0,
-    linear-gradient(to bottom, var(--dark-color-light) 3px, transparent 3px)
-      100% 0,
-    linear-gradient(to top, var(--dark-color-light) 3px, transparent 3px) 0 100%,
-    linear-gradient(to top, var(--dark-color-light) 3px, transparent 3px) 100%
-      100%;
-
-  background-repeat: no-repeat;
-  background-size: 35px 35px; */
 }
 
 .fetch .col-md-3 {
@@ -142,7 +124,8 @@ li a:hover {
 #labelinput {
   /* background-color: #fafafa; */
   border: 0;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(120, 3, 3, 0.3);
+  /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); */
   transition: 0.3s box-shadow;
 }
 #labelinput:hover {
@@ -156,14 +139,13 @@ li a:hover {
 }
 
 .fixed100 {
-  width:100px;
-
+  width: 100px;
 }
 
-.description_class{
-  width:100px;
-  display:block;
-  overflow:hidden;
+.description_class {
+  width: 100px;
+  display: block;
+  overflow: hidden;
 }
 
 .jsmargin {
