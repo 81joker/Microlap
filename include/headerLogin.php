@@ -15,21 +15,4 @@
 <body>
 
 
-    <style>
-        body {
-            background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
-            background-size: 100vw 100vh;
-            background-attachment: fixed;
-        }
-
-        #login-form {
-            width: 50%;
-            height: 60%;
-            margin: 7% auto;
-            border: 2px solid #000;
-            border-radius: 15px;
-            box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
-            padding: 15px;
-            background-color: #fff;
-        }
-    </style>
+    

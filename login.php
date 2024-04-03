@@ -12,17 +12,11 @@ require_once('include/herlFull.php');
 <?php
 $email = isset($_POST['email']) ? trim(strip_tags($_POST['email'])) : '';
 $password = isset($_POST['password']) ? trim(strip_tags($_POST['password'])) : '';
-
-/*
-if ((isset($_POST['email'])) ? sanitize($_POST['email'])) : '');
-$email = trim($_POST['email']);
-
-if ((isset($password)) ? sanitize($password) : '');
-$password = trim($_POST['password']);
-*/
-// echo $hash = password_hash($password, PASSWORD_DEFAULT);exit;
+$password =  sha1($password);
+/***************************** Nehad to do  ************************************/
+// check if user already logged in then redirect
 // Change hash from database and input in Register this wrong
-$hashPass =  '$2y$10$7kIABb6rhiTMO2/Ceq47gu/hJUP13T3aXVEqEfXx8XdBBiyhQlz1K';
+// $hashPass =  '$2y$10$7kIABb6rhiTMO2/Ceq47gu/hJUP13T3aXVEqEfXx8XdBBiyhQlz1K';
 $errors = array();
 
 if ($_POST) {
@@ -32,7 +26,7 @@ if ($_POST) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[]  = 'You must Email input';
     }
-    $query = $db->query("SELECT * FROM users WHERE email = '$email' ");
+    $query = $db->query("SELECT * FROM users WHERE email = '$email' AND  password='$password' ");
     $user = mysqli_fetch_assoc($query);
     $userCount = mysqli_num_rows($query);
     if ($userCount < 1) {
@@ -56,36 +50,53 @@ if ($_POST) {
     }
 }
 ?>
+<style>
+    body {
+        /* background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg'); */
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
+    }
 
+    #login-form {
+        width: 50%;
+        height: 60%;
+        margin: 7% auto;
+        border: 2px solid #000;
+        border-radius: 15px;
+        box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
+        padding: 15px;
+        background-color: #fff;
+    }
+</style>
 
-    <div id="login-form">
-        <h3 class="text-center">Login</h3>
-        <hr class="log">
-        <?php
-        if (!empty($errors)) {
-            foreach ($errors as $error) {
-                echo "<p class='text-danger'> $error</p>";
-            }
-        }
-        ?>
-        <form action="login.php" method="POST">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" id="email" value="<?= $email;  ?>">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" value="<?= $password;  ?>">
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-info" style="padding:10px 30px;border-radius:10px ">
-                <a class="btn btn-success" href="register.php" style="padding:10px 30px;border-radius:10px;color:white; ">Register</a>
-            </div>
-        </form>
-        <p class="text-right"><a href="index.php">Visit Site</a></p>
-    </div>
-
+<div id="login-form">
+    <h3 class="text-center">Login</h3>
+    <hr class="log">
     <?php
-    include('include/footer.php');
-    ob_end_flush();
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo "<p class='text-danger'> $error</p>";
+        }
+    }
     ?>
+    <form action="login.php" method="POST">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="email" value="<?= $email;  ?>">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" value="<?= $password;  ?>">
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login" class="btn btn-info" style="padding:10px 30px;border-radius:10px ">
+            <a class="btn btn-success" href="register.php" style="padding:10px 30px;border-radius:10px;color:white; ">Register</a>
+        </div>
+    </form>
+    <p class="text-right"><a href="index.php">Visit Site</a></p>
+</div>
+
+<?php
+include('include/footer.php');
+ob_end_flush();
+?>

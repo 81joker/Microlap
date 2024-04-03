@@ -34,7 +34,7 @@ function login($userlog, $uemail)
     $date = date('Y-m-d H:i:s');
     $db->query("UPDATE users SET last_login	='$date' WHERE id = '$userlog'");
     $_SESSION['sucess_falsh'] = 'You are now logged in!';
-    header('Location:menuüpunkt1.php');
+    header('Location:index.php');
 }
 
 
