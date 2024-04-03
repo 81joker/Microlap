@@ -1,4 +1,4 @@
- <div class="row pt-3 bg-info">
+ <div class="row pt-3">
      <div class="col-md-8 lorem-text">
          <h3>Lorem ipsum dolor sit amt</h3>
          <p class="inner">
