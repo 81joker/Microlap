@@ -13,15 +13,6 @@
 </head>
 
 <body>
-    <header>
-        <span class="sep"></span>
-        <h2>logo</h2>
-    </header>
-    <?php include('include/nav.php') ?>
-    <main>
-        <!-- Content main Logo page  -->
-        <!-- Change the value continaer from class scss -->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 m-auto">
-                    <div class="fetch shadow rounded p-5">
+
+
+    
