@@ -13,15 +13,23 @@
 </head>
 
 <body>
-    <header>
-        <span class="sep"></span>
-        <h2>logo</h2>
-    </header>
-    <?php include('include/nav.php') ?>
-    <main>
-        <!-- Content main Logo page  -->
-        <!-- Change the value continaer from class scss -->
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 m-auto">
-                    <div class="fetch shadow rounded p-5">
+
+
+    <style>
+        body {
+            background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
+            background-size: 100vw 100vh;
+            background-attachment: fixed;
+        }
+
+        #login-form {
+            width: 50%;
+            height: 60%;
+            margin: 7% auto;
+            border: 2px solid #000;
+            border-radius: 15px;
+            box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            background-color: #fff;
+        }
+    </style>
