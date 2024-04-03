@@ -33,9 +33,6 @@ if (!is_logged_in()) {
         <div class="col-md-4 mx-md-3">
             <label for="desc" class="form-label">Bezeeichung</label>
             <input type="text" class="form-control" id="desc" name="desc" required>
-            <!-- <div class="valid-feedback">
-            Looks good!
-        </div> -->
         </div>
         <div class="col-md-4">
             <label for="ernnerung" class="form-label">Ernnerung</label>
