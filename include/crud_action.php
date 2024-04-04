@@ -115,6 +115,7 @@ if ($result_data) {
 }
 
 mysqli_close($db);
+// handel the emial from this respone nehad
 print_r(json_encode($result_message));
 
 };
