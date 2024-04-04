@@ -2,7 +2,6 @@
 session_start();
 ob_start();
 require_once('config/config.php');
-// include('include/header.php');
 include('include/herlFull.php');
 
 if (!is_logged_in()) {

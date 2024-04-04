@@ -1,7 +1,12 @@
 <?php
-
 require('../config/config.php');
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 function test_input($data) {
   $data = trim($data);
@@ -9,7 +14,6 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-
 
 // Add Data
 if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyear']) && isset($_POST['desc']) && isset($_POST['ernnerung'])) {
@@ -31,6 +35,63 @@ if ($db->query($sql) === TRUE) {
     $result_message['message'] = "data inserted: " .  $db->insert_id;
     //sendMail($datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
     array_push($result_message['dataneeded'], $datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
+
+
+
+    /****************************Email start************************************ */
+    // احصل على بيانات النموذج
+    $name = 'Nehad';
+    $email = 'nehad.al.timimi@gmail.com'; //$_POST['email'];
+    // $message = $_POST['message'];
+
+    try {
+      $mail = new PHPMailer(true);
+
+      // إعدادات الخادم
+      $mail->isSMTP();
+      // $mail->Host = 'smtp.example.com';  
+      $mail->Host = 'smtp.gmail.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'tim26618@gmail.com';    
+      // $mail->Username = '4892bdcb15d23c';  
+      $mail->Password = 'jxffapekjallcwmf';  
+      // $mail->Password = 'bcacc18f1f8e31';  
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = 587;  
+      // $mail->Port = 2525;  
+
+      // المستلمون
+      $mail->setFrom($email, $name); 
+      $mail->addAddress('tim26618@gmail.com', 'Recipient Name'); 
+      $mail->addReplyTo($email, $name);
+
+      // المحتوى
+      $mail->isHTML(false);
+      $mail->Subject = $description;
+      $mail->Body = "Datum: $fulldate\n Bezeichung : $description\n Erinnerung: $dateernneurng:";
+
+
+      $mail->send();
+      // echo $result_message = array("success" => true, 'message' => 'تم إرسال البريد الإلكتروني بنجاح', "data" => array(), "dataneeded" => array());
+
+
+      // echo json_encode(['success' => true, 'message' => 'تم إرسال البريد الإلكتروني بنجاح']);
+      $result_message1['success'] = true;
+      $result_message1['message'] = "تم إرسال البريد الإلكتروني بنجاح";
+      // $result = array('success' => true, 'message' => "Message sent.");
+      // echo json_encode(array('success' => true, 'message' => "You contact information has been sent"));
+
+    } catch (Exception $e) {
+      //  echo json_encode(['success' => false, 'message' => 'تعذر إرسال البريد الإلكتروني']);
+      // echo $result = array('success' => false, 'message' => 'تعذر إرسال البريد الإلكتروني' . $mail->ErrorInfo);
+    }
+
+    /****************************Email End************************************ */
+
+
+
+
+
 } else {
     $result_message['success'] = false;
     $result_message['message'] = "failed";
