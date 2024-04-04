@@ -23,9 +23,9 @@ if (!is_logged_in()) {
         <div class="col-md-3">
             <label for="datum" class="form-label">datum(TT/MM/YYYY)</label><br />
             <div class="block">
-                <input type="text" id="dattag" name="dattag" class="form-control" style="width:60px;display:inline-block;" placeholder="DD" />
-                <input type="text" id="datmonat" name="datmonat" class="form-control" style="width:60px;display:inline-block;" placeholder="MM" />
-                <input type="text" id="datyear" name="datyear" class="form-control" style="width:60px;display:inline-block;" placeholder="YYYY" />
+                <input type="number" min="1" max="31" id="dattag" name="dattag" class="form-control" style="width:60px;display:inline-block;" placeholder="DD" />
+                <input type="number" min="1" max="12" id="datmonat" name="datmonat" class="form-control" style="width:60px;display:inline-block;" placeholder="MM" />
+                <input type="number" min="2024" max="2100" id="datyear" name="datyear" class="form-control" style="width:60px;display:inline-block;" placeholder="YYYY" />
             </div>
         </div>
 
