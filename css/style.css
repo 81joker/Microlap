@@ -22,29 +22,53 @@ body {
 header {
   margin-top: 120px;
   margin-bottom: 0;
-  background-color: antiquewhite;
 }
-h2 {
+.logo {
   margin-bottom: 0;
-  display: inline-block;
-  padding-left: 5px;
+  display: block;
+  padding-right: 7rem;
+  /* padding-left: 5px; */
   text-align: right;
   font-size: 73px !important;
   letter-spacing: 8px;
   color: var(--dark-color-light);
+  position: relative;
 }
+@media (min-width: 300px) {
+  .logo::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 17px;
+      left: 0;
+      border-bottom: 4px solid var(--dark-color-light);
+      width: calc(100% - 55%);
+    }
+}
+@media (min-width: 550px) {
+  .logo::before {
+      width: calc(100% - 30%);
+    }
+}
+@media (min-width: 992px) {
+  .logo::before {
+        width: calc(100% - 20%);
+    }
+}
+
 .sep {
-  height: 2px;
+  /* height: 2px;
   width: 75%;
   display: inline-block;
   text-align: left;
-  background-color: var(--dark-color-light);
+  background-color: var(--dark-color-light); */
 }
 
 main {
   position: relative;
   z-index: 0;
   background-color: #f0f1f3;
+  z-index: 1;
 }
 main::before {
   background-color: var(--dark-color-light);
@@ -56,6 +80,21 @@ main::before {
   top: 0;
   margin-bottom: 4rem;
 }
+@media (min-width: 576px) {
+  .nav-main {
+    /* z-index: -1; */
+    width: 100%;
+    top: 0;
+  }
+}
+@media (min-width:992px) {
+.nav-main {
+    position: absolute;
+    top: 100px;
+    left: 0;
+  }
+}
+
 /* navbar leftside */
 ul {
   list-style-type: none;
