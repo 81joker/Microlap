@@ -57,102 +57,68 @@ if (isset($_POST['signup'])) {
     }
 }
 
-
-
-
-
-
-
-
-
 ?>
 
-
 <style>
-    .login-form .avatar {
-        position: absolute;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        top: -50px;
-        width: 95px;
-        height: 95px;
-        border-radius: 50%;
-
-        background: #70c5c0;
-
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    body {
+        background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
+        background-size: 100vw 100vh;
+        background-attachment: fixed;
     }
 
-    .login-form .avatar img {
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 9;
+    #register-form {
+        width: 50%;
+        height: 60%;
+        margin: 7% auto;
+        border: 2px solid #000;
+        border-radius: 15px;
+        box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
+        padding: 15px;
+        background-color: #fff;
     }
 </style>
 
-<header>
-
-    <h2><span> Registerin</span></h2>
-
-</header>
-<main>
-
-
-    <div class="container ">
-        <div class="row main">
-            <div class="col-md-6  m-auto calander login-form">
-                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-                    <!-- To do Avatar imag in php  -->
-                    <div class="avatar">
-                        <img src="https://source.unsplash.com/100x100/?woman,men" alt="Avatar" class="rounded-circle">
-                    </div>
-
-                    <div>
-                        <?php
-                        if (!empty($errors)) {
-                            foreach ($errors as $error) {
-                                echo "<p class='text-danger'> $error</p>";
-                            }
-                        }
-                        ?>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" id="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
-                        <div class="float-right">
-                            <input type="checkbox" c onclick="passShow()">Show Password
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm">Confirm Password</label>
-                        <input type="password" class="form-control" name="confirm" id="confirm">
-                        <div class="float-right">
-                            <input type="checkbox" onclick="show()">Show Password
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="signup" name="signup" class="btn btn-info" style="padding:10px 30px;border-radius:10px">
-                    </div>
-                </form>
-                <p class="text-right"><a href="index.php">Visit Home</a></p>
+<div id="register-form">
+    <h2 class="text-center">Register</h2>
+    <hr class="log">
+    <?php
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo "<p class='text-danger'> $error</p>";
+        }
+    }
+    ?>
+    <div class="card-body">
+        <form maction="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" >
             </div>
-            <div class="col-md-3 bg-black"></div>
-        </div>
-    </div>
-</main>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" >
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" >
+                <div class="float-right">
+                    <input type="checkbox" c onclick="passShow()">Show Password
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="confirm" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm" name="confirm" >
+                <div class="float-right">
+                    <input type="checkbox" onclick="show()">Show Password
+                </div>
 
+            </div>
+            <input type="submit" value="signup" name="signup" class="btn btn-info" style="padding:10px 30px;border-radius:10px">
+
+            </form>
+    </div>
+    <p class="text-right"><a href="index.php">Visit Site</a></p>
+</div>
 <script type="text/javascript">
     const show = () => {
         var x = document.getElementById('confirm');
