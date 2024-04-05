@@ -52,25 +52,18 @@ if ($_POST) {
 ?>
 <style>
     body {
-        /* background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg'); */
+        background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
         background-size: 100vw 100vh;
         background-attachment: fixed;
     }
 
-    #login-form {
-        width: 50%;
-        height: 60%;
-        margin: 7% auto;
-        border: 2px solid #000;
-        border-radius: 15px;
-        box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
-        padding: 15px;
-        background-color: #fff;
+    footer{
+        display: none;
     }
 </style>
 
-<div id="login-form">
-    <h3 class="text-center">Login</h3>
+<div id="login-form" class="authentication-form">
+    <h1 class="text-center fw-bold font-monospace">Login</h1>
     <hr class="log">
     <?php
     if (!empty($errors)) {
@@ -80,20 +73,22 @@ if ($_POST) {
     }
     ?>
     <form action="login.php" method="POST">
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="email">Email</label>
             <input type="text" class="form-control" name="email" id="email" value="<?= $email;  ?>">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password" value="<?= $password;  ?>">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2 pt-3">
             <input type="submit" value="Login" class="btn btn-info" style="padding:10px 30px;border-radius:10px ">
-            <a class="btn btn-success" href="register.php" style="padding:10px 30px;border-radius:10px;color:white; ">Register</a>
         </div>
     </form>
-    <p class="text-right"><a href="index.php">Visit Site</a></p>
+    <div class="d-flex justify-content-between mt-3">
+        <p><a href="register.php">Visit Register</a></p>
+        <p><a href="index.php">Visit Site</a></p>
+    </div>
 </div>
 
 <?php

@@ -66,20 +66,13 @@ if (isset($_POST['signup'])) {
         background-attachment: fixed;
     }
 
-    #register-form {
-        width: 50%;
-        height: 60%;
-        margin: 7% auto;
-        border: 2px solid #000;
-        border-radius: 15px;
-        box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
-        padding: 15px;
-        background-color: #fff;
+    footer {
+        display: none;
     }
 </style>
 
-<div id="register-form">
-    <h2 class="text-center">Register</h2>
+<div id="register-form" class="authentication-form">
+    <h2 class="text-center fw-bold font-monospace">Register</h2>
     <hr class="log">
     <?php
     if (!empty($errors)) {
@@ -90,34 +83,37 @@ if (isset($_POST['signup'])) {
     ?>
     <div class="card-body">
         <form maction="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
-            <div class="mb-3">
+            <div class="mb-2">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" >
+                <input type="text" class="form-control" id="name" name="name">
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" >
+                <input type="email" class="form-control" id="email" name="email">
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" >
+                <input type="password" class="form-control" id="password" name="password">
                 <div class="float-right">
                     <input type="checkbox" c onclick="passShow()">Show Password
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-2">
                 <label for="confirm" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm" name="confirm" >
+                <input type="password" class="form-control" id="confirm" name="confirm">
                 <div class="float-right">
                     <input type="checkbox" onclick="show()">Show Password
                 </div>
 
             </div>
             <input type="submit" value="signup" name="signup" class="btn btn-info" style="padding:10px 30px;border-radius:10px">
-
-            </form>
+        </form>
     </div>
-    <p class="text-right"><a href="index.php">Visit Site</a></p>
+    <div class="d-flex justify-content-between mt-2">
+        <p><a href="login.php">Visit Login</a></p>
+        <p><a href="index.php">Visit Site</a></p>
+    </div>
+
 </div>
 <script type="text/javascript">
     const show = () => {
