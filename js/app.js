@@ -47,14 +47,22 @@ $(document).ready(function () {
       type: $(this).attr("method"),
       url: $(this).attr("action"),
       success: function (response) {
+        console.log(response.success);
         $("#desc").val("");
         $("#dattag").val("");
         $("#datmonat").val("");
         $("#datyear").val("");
         $("#ernnerung").val("");
         AJAXSuccessSubmitSave(response);
+        if (response.success) {
+        displayMessage("successfully addded");
+      } else {
+        displayMessage("Element Not addded", false);
+      }
       },
-      error: AJAXErrorSubmitSave,
+       error: (data) => {
+      console.log(data);
+    },
       dataType: "json",
       timeout: 3000,
     });
@@ -65,7 +73,7 @@ $(document).ready(function () {
   function AJAXSuccessSubmitSave(data) {
     //alert('congrats we send email successfully' + data.mail);
     //  console.log(data.dataneeded);
-    //  console.log(data);
+    // console.log(data);
     let request_result = data.success;
     if (request_result) {
       let tboadyinsert = document.getElementById("data_insert");
@@ -137,7 +145,6 @@ $(document).ready(function () {
     }
 
     // send email
-
     $.ajax({
       data: {
         day: data.dataneeded[0],
@@ -147,17 +154,22 @@ $(document).ready(function () {
         fulldate: data.dataneeded[4],
         email: data.dataneeded[5],
       },
-      type: "POST",
-      url: "include/updatedmail.php",
-      success: AJAXSuccessEmail,
-      error: AJAXErrorEmail,
+      // url: "menuüpunkt1.php",
+      // type: "POST",
+      success: function (response) {
+        alert(response)
+        AJAXSuccessEmail
+      },
+      success: function (response) {
+        AJAXErrorEmail(response)
+      },
       dataType: "json",
     });
     function AJAXSuccessEmail() {
       displayMessage("Mail Sent Successfully");
     }
-    function AJAXErrorEmail() {
-      displayMessage("We could not sent mail");
+    function AJAXErrorEmail(response) {
+      displayMessage("We could not sent mail" + response);
     }
   }
 
