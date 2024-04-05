@@ -16,9 +16,6 @@ function test_input($data)
   return $data;
 }
 
- $dataneeded = '';
-echo $dataneeded;
-
 // Add Data
 if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyear']) && isset($_POST['desc']) && isset($_POST['ernnerung'])) {
   $result_message = array("success" => false, "message" => '', "data" => array(), "dataneeded" => array());
@@ -61,15 +58,13 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
     $result_emial = json_encode($result_message);
     $array  = json_decode($result_emial, true);
     $dataneeded = $array['dataneeded'][5];
+    $email = $dataneeded; 
+    $emailParts = explode("@", $email);
+    $name = ucfirst($emailParts[0]);
 
-    /** PHPMailer **/
-    $name = 'Nehad';
-    $email = $dataneeded ; 
-    // $message = $_POST['message'];
 
     try {
       $mail = new PHPMailer(true);
-
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
@@ -86,7 +81,7 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
       // cnotent
       $mail->isHTML(false);
       $mail->Subject = $description;
-      $mail->Body = "Hi : $email\nSie haben einen Termin am Datum: $fulldate\n Bezeichung : $description\n Erinnerung: $dateernneurng:";
+      $mail->Body = "Hi : $name\nSie haben einen Termin am Datum: $fulldate\n Bezeichung : $description\n Erinnerung: $dateernneurng:";
 
 
       $mail->send();
@@ -105,30 +100,6 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
     $result_message['success'] = false;
     $result_message['message'] = "failed";
   }
-
-
-  // $sql_return = "SELECT * FROM `Kalender` ORDER BY id DESC";
-  // $result_data = mysqli_query($db, $sql_return);
-  // if ($result_data) {
-  //   while ($row = mysqli_fetch_assoc($result_data)) {
-  //     $data = array(
-  //       "id" => $row['id'],
-  //       "day" => $row['dattag'],
-  //       "month" => $row['datum'],
-  //       "year" => $row['datyear'],
-  //       "desc" => $row['description'],
-  //       "erinnerung" => $row['erinnerung']
-  //     );
-  //     array_push($result_message['data'], $data);
-  //   };
-  // }
-
-  // mysqli_close($db);
-  // // print_r(json_encode($result_message));
-  // $result_emial = json_encode($result_message);
-  // $array  = json_decode($result_emial, true);
-  // $dataneeded = $array['dataneeded'][5];
-  // $dataneeded = $dataneeded;
 
 };
 
