@@ -19,26 +19,17 @@ $slug = explode('.', $basName);
 
 <body>
     <header>
-            <span class="sep"></span>
-            <h2 class="logo">logo</h2>
+        <h2 class="h-logo">
+            <span class="spn">
+                <?php echo (isset($slug[0]) ? $slug[0] : "logo")?>
+            </span>
+        </h2>
     </header>
-
     <main>
-        <div class="container-md">
-            <div class="main">
-                <div class="row">
-                    <?php /* include('include/nav.php') */ ?>
-                    <!-- Nav  -->
-                    <div class="nav-main flex justify-content-start">
-                        <div class="col-md-3">
-                            <ul>
-                                <li><a href="homepage.php">Home</a></li>
-                                <li><a href="menuüpunkt1.php">Menuüpunkt 1</a></li>
-                                <li><a href="logout.php"> Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- / Nav  -->
-                    <div class="col-lg-8 m-auto">
-                        <div class="fetch shadow rounded p-5">
-                            <h1><?= ucfirst($slug[0])  ?></h1>
+        <!-- Change the value continaer from class scss -->
+        <div class="container-fluid">
+            <div class="row">
+                <?php include('include/nav.php') ?>
+                <div class="col-sm-8 col-md-6">
+                    <div class="fetch shadow rounded p-5">
+                        <h1><?= ucfirst($slug[0])  ?></h1>

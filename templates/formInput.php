@@ -18,7 +18,7 @@ if (!is_logged_in()) {
     <span class="alert_messagetext"></span>
     <button class="close closebtnalert" type="button">&times;</button>
 </div>
-<div class="border border-dark">
+<div class="border-black">
     <form action="include/crud_action.php" id="saveForm" method="post" class="row g-3 needs-validation p-2" novalidate>
         <div class="col-md-3">
             <label for="datum" class="form-label">datum(TT/MM/YYYY)</label><br />

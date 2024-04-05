@@ -11,7 +11,7 @@ if (!is_logged_in()) {
 
 <?php include('include/header.php') ?>
 
-<?php include('templates/main-page.php'); ?>
+<?php include('templates/content-home.php');  ?>
 
 
 <?php include('include/footer.php') ?>

@@ -8,7 +8,9 @@
   --dark-color-light: #606060;
   --gray-color: #f0f1f3;
 }
-
+.border-black {
+  border: 2px solid var(--dark-color) !important;
+}
 /*
 ******
 Header Style
@@ -21,87 +23,75 @@ body {
 
 header {
   margin-top: 120px;
-  margin-bottom: 0;
-}
-.logo {
-  margin-bottom: 0;
-  display: block;
-  padding-right: 7rem;
-  /* padding-left: 5px; */
-  text-align: right;
-  font-size: 73px !important;
-  letter-spacing: 8px;
-  color: var(--dark-color-light);
-  position: relative;
-}
-@media (min-width: 300px) {
-  .logo::before {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 17px;
-      left: 0;
-      border-bottom: 4px solid var(--dark-color-light);
-      width: calc(100% - 55%);
-    }
-}
-@media (min-width: 550px) {
-  .logo::before {
-      width: calc(100% - 30%);
-    }
-}
-@media (min-width: 992px) {
-  .logo::before {
-        width: calc(100% - 20%);
-    }
+  margin-bottom: 30px;
 }
 
-.sep {
-  /* height: 2px;
+.h-logo {
   width: 75%;
-  display: inline-block;
-  text-align: left;
-  background-color: var(--dark-color-light); */
+  text-align: right;
+  border-bottom: 3px solid var(--dark-color-light);
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+}
+
+.h-logo .spn {
+  background-color: white;
+  color: var(--dark-color-light);
+  padding: 0 10px;
+  font-size: 5rem;
+  letter-spacing: 7px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+@media (max-width: 757px) {
+.h-logo .spn {
+    font-size: 3rem;
+  }
 }
 
 main {
   position: relative;
   z-index: 0;
-  background-color: #f0f1f3;
-  z-index: 1;
 }
 main::before {
   background-color: var(--dark-color-light);
   content: "";
-  height: 70%;
+  height: 75%;
   position: absolute;
   width: 100%;
   z-index: -1;
-  top: 0;
+  top: 10%;
   margin-bottom: 4rem;
-}
-@media (min-width: 576px) {
-  .nav-main {
-    /* z-index: -1; */
-    width: 100%;
-    top: 0;
-  }
-}
-@media (min-width:992px) {
-.nav-main {
-    position: absolute;
-    top: 100px;
-    left: 0;
-  }
 }
 
 /* navbar leftside */
-ul {
+#col-nav {
+  padding-left: 10rem;
+  padding-top: 8rem;
+}
+@media (max-width: 992px) {
+  #col-nav {
+    padding-left: 3rem;
+  }
+}
+@media (max-width: 757px) {
+  #col-nav {
+    padding-left: 0;
+  }
+}
+
+.nav-main {
+  width: 500px;
   list-style-type: none;
-  margin: 22% 42%;
-  padding: 0;
-  width: 200px;
   background-color: transparent;
+}
+@media (max-width: 600px) {
+  .nav-main {
+    width: 200px;
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }
 }
 
 li a {
@@ -110,11 +100,14 @@ li a {
   padding: 2px 16px;
   text-decoration: none;
   border: 1px solid var(--white-color);
-  margin-right: -110px;
-  margin-top: 3px;
+}
+@media (max-width: 600px) {
+  .nav-main li:last-child a {
+    padding-bottom: 1rem;
+    margin-bottom: -2rem;
+  }
 }
 
-/* Change the link color on hover */
 li a:hover {
   background-color: var(--white-color);
   color: var(--dark-color);
@@ -122,7 +115,8 @@ li a:hover {
   transition: 0.1s;
 }
 .lorem-text {
-  font-size: 11px;
+  font-size: 12px;
+  color: var(--dark-color-light);
 }
 
 /* Fetch Page */
@@ -130,14 +124,8 @@ li a:hover {
   margin-top: 0;
   padding: 15px;
   background-color: var(--white-color);
-  /* border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' width='11' height='11'  ><g fill='%23489fe2'><rect width='1' height='5'/><rect y='6' width='1' height='5'/><rect x='10' y='6' width='1' height='5'/><rect x='10' width='1' height='5'/><rect width='5' height='1'/><rect y='10' width='5' height='1'/><rect x='6' y='10' width='5' height='1'/><rect x='6' width='5' height='1'/></g></svg>")
-    5; */
-  /* max-width: 100%; */
-  /* word-wrap: break-word;
-  overflow-wrap: break-word; */
   border-radius: 3px;
   border: 2px solid #000;
-  /* margin-top: -30px; */
 }
 
 .fetch .lorem-text {
@@ -147,13 +135,13 @@ li a:hover {
   word-wrap: break-word;
 }
 
-.fetch .col-md-3 {
+/* .fetch .col-md-3 {
   overflow: hidden;
-}
+} */
 
 /* ******* Menuüpunkt-1  ******* */
 .calander {
-  background-color: rgb(187, 187, 201);
+  background-color: #00f;
   /* background-color: var(--white-color); */
 }
 .block {
@@ -163,6 +151,7 @@ li a:hover {
 #labelinput {
   /* background-color: #fafafa; */
   border: 0;
+  background-color: red !important;
   box-shadow: 0 0 3px rgba(120, 3, 3, 0.3);
   /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); */
   transition: 0.3s box-shadow;
@@ -174,7 +163,8 @@ li a:hover {
 
 #mtable {
   border: 2px solid #000;
-  background-color: var(--white-color);
+  background-color:#0808;
+  /* background-color: var(--white-color); */
 }
 
 .fixed100 {
@@ -190,3 +180,43 @@ li a:hover {
 .jsmargin {
   margin-right: 5px;
 }
+/* Login Form */
+.authentication-form {
+  width: 30%;
+  height: 60%;
+  min-height: 350px;
+  margin: 7% auto;
+  border: 2px solid var(--dark-color);
+  border-radius: 15px;
+  box-shadow: 7px 7px 15px rgba(0, 0, 0, 0.6);
+  padding: 1.3em;
+  background-color: var(--white-color);
+    position: relative;
+      z-index: 1;
+      overflow: hidden;
+}
+
+@media (max-width: 1199.98px) {
+  .authentication-form {
+    width: 50%;
+  }
+}
+@media (max-width: 575.98px) {
+  .authentication-form {
+    width: 90%;
+  }
+}
+.authentication-form::before{
+  z-index: -1;
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0; 
+  left:0; 
+  bottom: 0;
+  right: 0;
+  opacity: 0.5;
+  background: url('https://karriere.microlab.at/asset/770/001635/IMG_20221017_115759_8831.JPG-770.jpg');
+}
+
