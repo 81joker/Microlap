@@ -34,7 +34,7 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
   if ($db->query($sql) === TRUE) {
     $result_message['success'] = true;
     $result_message['message'] = "data inserted: " .  $db->insert_id;
-    //sendMail($datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
+    // sendMail($datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
     array_push($result_message['dataneeded'], $datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
 
     $sql_return = "SELECT * FROM `Kalender` ORDER BY id DESC";
@@ -54,7 +54,7 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
     }
 
     mysqli_close($db);
-    // print_r(json_encode($result_message));
+     print_r(json_encode($result_message));
     $result_emial = json_encode($result_message);
     $array  = json_decode($result_emial, true);
     $dataneeded = $array['dataneeded'][5];
@@ -86,8 +86,8 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
 
       $mail->send();
       // echo json_encode(['success' => true, 'message' => 'تم إرسال البريد الإلكتروني بنجاح']);
-      $result_message1['success'] = true;
-      $result_message1['message'] = "تم إرسال البريد الإلكتروني بنجاح";
+      $result_message['success'] = true;
+      $result_message['message'] = "تم إرسال البريد الإلكتروني بنجاح";
       // $result = array('success' => true, 'message' => "Message sent.");
       // echo json_encode(array('success' => true, 'message' => "You contact information has been sent"));
 
