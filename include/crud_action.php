@@ -3,7 +3,6 @@ require('../config/config.php');
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -26,9 +25,7 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
   $fulldate = $dateyear . '-' . $datemonat . '-' . $datetag . ' ' . '00:00:00';
   $description = $_POST['desc'];
   $dateernneurng = $_POST['ernnerung'];
-
-  // $city = $_POST['city'];
-
+  
   $sql = "INSERT INTO `Kalender`( `description`, `erinnerung`, `datum`, `dattag`, `datyear`, `fulldate`)
 	VALUES ('$description','$dateernneurng', '$datemonat', '$datetag', '$dateyear', '$fulldate')";
   if ($db->query($sql) === TRUE) {
@@ -54,11 +51,11 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
     }
 
     mysqli_close($db);
-     print_r(json_encode($result_message));
+    print_r(json_encode($result_message));
     $result_emial = json_encode($result_message);
     $array  = json_decode($result_emial, true);
     $dataneeded = $array['dataneeded'][5];
-    $email = $dataneeded; 
+    $email = $dataneeded;
     $emailParts = explode("@", $email);
     $name = ucfirst($emailParts[0]);
 
@@ -68,7 +65,7 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
       $mail->isSMTP();
       $mail->Host = 'smtp.gmail.com';
       $mail->SMTPAuth = true;
-      $mail->Username = 'tim26618@gmail.com';   // Email Admin
+      $mail->Username = 'tim26618@gmail.com'; // Email Admin
       $mail->Password = 'jxffapekjallcwmf';
       $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
       $mail->Port = 587;
@@ -85,24 +82,18 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
 
 
       $mail->send();
-      // echo json_encode(['success' => true, 'message' => 'تم إرسال البريد الإلكتروني بنجاح']);
       $result_message['success'] = true;
-      $result_message['message'] = "تم إرسال البريد الإلكتروني بنجاح";
-      // $result = array('success' => true, 'message' => "Message sent.");
-      // echo json_encode(array('success' => true, 'message' => "You contact information has been sent"));
-
+      $result_message['message'] = "successfully Email sended";
     } catch (Exception $e) {
-      // echo $result = array('success' => false, 'message' => 'تعذر إرسال البريد الإلكتروني' . $mail->ErrorInfo);
+      $result_message['success'] = false;
+      $result_message['message'] = "failed";
     }
-
     /** /PHPMailer **/
   } else {
     $result_message['success'] = false;
     $result_message['message'] = "failed";
   }
-
 };
-
 
 
 // update
@@ -116,9 +107,7 @@ if (isset($_POST['edit_dattag']) && isset($_POST['edit_datmonat']) && isset($_PO
   $update_year = test_input($_POST['edit_datyear']);
   $update_des = test_input($_POST['edit_desc']);
   $update_ernnerung = test_input($_POST['edit_ernnerung']);
-
   $update_fullyear = $update_year . '-' . $update_month . '-' . $update_day . ' ' . '00:00:00';
-
   $sql_update = "UPDATE `kalender` SET `description`='$update_des',`erinnerung`='$update_ernnerung',`datum`='$update_month',`dattag`='$update_day',`datyear`='$update_year',`fulldate`='$update_fullyear' WHERE id=$update_id";
 
   if ($db->query($sql_update) === TRUE) {

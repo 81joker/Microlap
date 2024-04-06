@@ -12,8 +12,11 @@ alertclose.addEventListener("click", () => {
 function displayMessage(message) {
   alertMessage.classList.add("show");
   alertMessageText.innerText = message;
-  // select the message success or falid no repeat
+  setTimeout(function() {
+        alertMessage.classList.remove("show");
+    }, 2000); 
 }
+
 // function to delete
 function deleteDataFunction(event) {
   let targetid = event.target.getAttribute("data-id");
