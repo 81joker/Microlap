@@ -86,7 +86,7 @@ if (isset($_POST['signup'])) {
                 </div>
 
             </div>
-            <input type="submit" value="signup" name="signup" class="btn btn-info" style="padding:10px 30px;border-radius:10px">
+            <input type="submit" value="signup" name="signup" class="btn btn-dark px-4 mt-2 rounded-3">
         </form>
     </div>
     <div class="d-flex justify-content-between mt-2">

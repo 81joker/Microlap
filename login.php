@@ -53,16 +53,15 @@ if ($_POST) {
     <form action="login.php" method="POST">
         <div class="form-group mb-2">
             <label for="email">Email</label>
-            <input type="text" class="form-control" name="email" id="email" value="<?= $email; ?> "
-                placeholder="Geben Sie Ihren Email Bitte">
+            <input type="text" class="form-control" name="email" id="email" value="<?= $email; ?> " placeholder="Geben Sie Ihren Email Bitte">
         </div>
         <div class="form-group mb-2">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password"
-                placeholder="Geben Sie Ihren Password Bitte">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Geben Sie Ihren Password Bitte">
         </div>
         <div class="form-group mb-2 pt-3">
-            <input type="submit" value="Login" class="btn btn-info" style="padding:10px 30px;border-radius:10px ">
+            <input type="submit" value="Login" class="btn btn-dark px-4 rounded-2">
+
         </div>
     </form>
     <div class="d-flex justify-content-between mt-3">
