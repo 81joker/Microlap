@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require_once('config/config.php');
-include('include/headerLogin.php');
+include('include/headerAuth.php');
 require_once('include/herlFull.php');
 
 // Updated
@@ -10,11 +10,9 @@ $email = isset($_POST['email']) ? trim(strip_tags($_POST['email'])) : '';
 $password = isset($_POST['password']) ? trim(strip_tags($_POST['password'])) : '';
 $confirm = isset($_POST['confirm']) ? trim(strip_tags($_POST['confirm'])) : '';
 
-
 if (isset($_POST['signup'])) {
     $errors = array();
     if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['confirm'])) {
-
         $errors[]  = 'You muss provide Email and Password';
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -22,33 +20,28 @@ if (isset($_POST['signup'])) {
     }
     $query = $db->query("SELECT * FROM users WHERE email = '$email' ");
     $user = mysqli_fetch_assoc($query);
-
     $userCount = mysqli_num_rows($query);
 
-
     if ($userCount == 1) {
-        $errors[]  = 'Thats email exists is in our database';
+        $errors[]  = 'Die E-Mail-Adresse ist in unserer Datenbank vorhanden';
     }
 
     if (strlen($password) < 4) {
-        $errors[]  = 'You muss provide Password mohr 4 ';
+        $errors[]  = 'Sie müssen das Passwort mohr 4 angeben';
     }
 
     if ($password !== $confirm) {
-
-        $errors[] = "Soory Password ist Not Match";
+        $errors[] = "Leider stimmt das Passwort nicht überein";
     }
     $shPassword = sha1($password);
 
     if (!empty($errors)) {
         error_display($errors);
     } else {
-
         $sql = "INSERT INTO users (name, email , password)
   VALUES ('$name', '$email', '$shPassword')";
-
         if ($db->query($sql) === TRUE) {
-            echo "New record created successfully";
+            echo "Neuer Datensatz erfolgreich erstellt";
             header('Location: login.php');
         } else {
             echo "Error: " . $sql . "<br>" . $db->error;
@@ -56,20 +49,7 @@ if (isset($_POST['signup'])) {
         $db->close();
     }
 }
-
 ?>
-
-<style>
-    body {
-        background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
-        background-size: 100vw 100vh;
-        background-attachment: fixed;
-    }
-
-    footer {
-        display: none;
-    }
-</style>
 
 <div id="register-form" class="authentication-form">
     <h2 class="text-center fw-bold font-monospace">Register</h2>
@@ -85,22 +65,22 @@ if (isset($_POST['signup'])) {
         <form maction="<?= $_SERVER['PHP_SELF'] ?>" method="POST">
             <div class="mb-2">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Geben Sie Ihr Name ein">
             </div>
             <div class="mb-2">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Geben Sie Ihr Email ein">
             </div>
             <div class="mb-2">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Geben Sie Ihr Passwort ein">
                 <div class="float-right">
-                    <input type="checkbox" c onclick="passShow()">Show Password
+                    <input type="checkbox" onclick="passShow()">Show Password
                 </div>
             </div>
             <div class="mb-2">
                 <label for="confirm" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm" name="confirm">
+                <input type="password" class="form-control" id="confirm" name="confirm" placeholder="Wiederhole dein Passwort">
                 <div class="float-right">
                     <input type="checkbox" onclick="show()">Show Password
                 </div>
@@ -126,7 +106,6 @@ if (isset($_POST['signup'])) {
     }
     const passShow = () => {
         var x = document.getElementById('password');
-
         if (x.type === "password") {
             x.type = "text";
         } else {

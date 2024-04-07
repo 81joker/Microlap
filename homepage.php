@@ -13,5 +13,4 @@ if (!is_logged_in()) {
 
 <?php include('templates/content-home.php');  ?>
 
-
 <?php include('include/footer.php') ?>

@@ -4,7 +4,7 @@ require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 function test_input($data)
@@ -18,13 +18,16 @@ function test_input($data)
 // Add Data
 if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyear']) && isset($_POST['desc']) && isset($_POST['ernnerung'])) {
   $result_message = array("success" => false, "message" => '', "data" => array(), "dataneeded" => array());
-
   $datetag = $_POST['dattag'];
   $datemonat = $_POST['datmonat'];
   $dateyear = $_POST['datyear'];
   $fulldate = $dateyear . '-' . $datemonat . '-' . $datetag . ' ' . '00:00:00';
   $description = $_POST['desc'];
   $dateernneurng = $_POST['ernnerung'];
+  if (empty($_POST['ernnerung'])) {
+    echo 'Please select a reminder.';
+    exit; 
+  }
   
   $sql = "INSERT INTO `Kalender`( `description`, `erinnerung`, `datum`, `dattag`, `datyear`, `fulldate`)
 	VALUES ('$description','$dateernneurng', '$datemonat', '$datetag', '$dateyear', '$fulldate')";
@@ -33,7 +36,6 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
     $result_message['message'] = "data inserted: " .  $db->insert_id;
     // sendMail($datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
     array_push($result_message['dataneeded'], $datetag, $datemonat, $description, $dateernneurng, $fulldate, $_SESSION['uemail']);
-
     $sql_return = "SELECT * FROM `Kalender` ORDER BY id DESC";
     $result_data = mysqli_query($db, $sql_return);
     if ($result_data) {
@@ -49,7 +51,6 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
         array_push($result_message['data'], $data);
       };
     }
-
     mysqli_close($db);
     print_r(json_encode($result_message));
     $result_emial = json_encode($result_message);

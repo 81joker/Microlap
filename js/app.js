@@ -43,7 +43,6 @@ function deleteDataFunction(event) {
 
 $(document).ready(function () {
   // start function to save the submited data
-
   $("#saveForm").submit(function () {
     $.ajax({
       data: $(this).serialize(),
@@ -75,7 +74,6 @@ $(document).ready(function () {
 
   function AJAXSuccessSubmitSave(data) {
     //alert('congrats we send email successfully' + data.mail);
-    //  console.log(data.dataneeded);
     // console.log(data);
     let request_result = data.success;
     if (request_result) {
@@ -93,7 +91,6 @@ $(document).ready(function () {
 
         // this class will fix description long text if any
         //newtd2.classList.add('description_class');
-
         // tag td
         let newtd3 = document.createElement("td");
 
@@ -114,7 +111,6 @@ $(document).ready(function () {
           "shadow-none",
           "fixed100"
         );
-
         // set update href
         updateBtn.setAttribute(
           "href",
@@ -179,10 +175,6 @@ $(document).ready(function () {
   function AJAXErrorSubmitSave(data) {
     displayMessage("Could not add the data");
   }
-
-  // end of save
-
-  // edit function
 
   // start function to save the submited data
 
