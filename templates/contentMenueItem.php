@@ -3,16 +3,13 @@ session_start();
 ob_start();
 require_once('config/config.php');
 include('include/herlFull.php');
-
 if (!is_logged_in()) {
     login_error_redirect();
 }
-
 ?>
 <div class="alert_messagediv alert alert-success fade hide">
     <span class="alert_messagetext"></span>
     <button class="close closebtnalert" type="button">&times;</button>
-
 </div>
 <!-- alert end -->
 <div class="speichen">
@@ -25,11 +22,8 @@ if (!is_logged_in()) {
                     <input type="text" id="datmonat" name="datmonat" class="form-control" style="width:60px;display:inline-block;" placeholder="MM" />
                     <input type="text" id="datyear" name="datyear" class="form-control" style="width:60px;display:inline-block;" placeholder="YYYY" />
                 </div>
-
-
             </div>
         </div>
-
         <div class="form-row">
             <div class="col-md-4">
                 <label for="desc">Bezeeichung</label>
@@ -50,15 +44,12 @@ if (!is_logged_in()) {
 
         <div class="d-flex flex-row-reverse">
             <p><input type="submit" class="btn btn-outline-dark  float-right" value="SPEICHERN"></p>
-            <!-- <button id="btnAddAction" name="submit" onClick="callCrudAction('add','')" class="btn btn-default ">SPEICHERN</button> -->
-            <!-- <input type="submit" class="btn btn-default float-right" value="SPEICHERN"> -->
     </form>
 </div>
 </div>
 </div>
 <!-- Show The Info -->
 <div class="table mt-2 border-black">
-
     <table class=" table table-borderless" id="displaytable">
         <thead>
             <tr>

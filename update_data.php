@@ -56,7 +56,6 @@ function showDes()
   }
 };
 
-
 function showTag($option)
 {
   if (isset($_GET['tag'])) {
