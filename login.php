@@ -3,7 +3,7 @@ session_start();
 ob_start();
 
 require_once("config/config.php");
-include('include/headerLogin.php');
+include('include/headerAuth.php');
 require_once('include/herlFull.php');
 
 $email = isset($_POST['email']) ? trim(strip_tags($_POST['email'])) : '';
@@ -39,17 +39,6 @@ if ($_POST) {
     }
 }
 ?>
-<style>
-body {
-    background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
-    background-size: 100vw 100vh;
-    background-attachment: fixed;
-}
-
-footer {
-    display: none;
-}
-</style>
 
 <div id="login-form" class="authentication-form">
     <h1 class="text-center fw-bold font-monospace">Login</h1>

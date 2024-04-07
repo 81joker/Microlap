@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require_once('config/config.php');
-include('include/headerLogin.php');
+include('include/headerAuth.php');
 require_once('include/herlFull.php');
 
 // Updated
@@ -50,17 +50,6 @@ if (isset($_POST['signup'])) {
     }
 }
 ?>
-<style>
-    body {
-        background-image: url('https://karriere.microlab.at/asset/1500/002667/Entwickler.jpg');
-        background-size: 100vw 100vh;
-        background-attachment: fixed;
-    }
-
-    footer {
-        display: none;
-    }
-</style>
 
 <div id="register-form" class="authentication-form">
     <h2 class="text-center fw-bold font-monospace">Register</h2>
