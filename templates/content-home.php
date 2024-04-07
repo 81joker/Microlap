@@ -10,11 +10,11 @@ if ($result_data) {
 ?>
     <?php while ($row = mysqli_fetch_assoc($result_data)) : ?>
         <div class="row pt-3 flex-wrap">
-            <div class="col-md-4 order-lg-2">
+            <h3 class="py-2">Lorem ipsum dolor sit amt</h3>
+            <div class="col-md-4 order-lg-2 py-sm-1">
                 <img src="https://placehold.jp/230x160.png" style="height: 200px;opacity: 0.8;" class="w-100 img-fluid">
             </div>
             <div class="col-md-8 lorem-text order-lg-1 order-sm-2 pt-2">
-                <h3>Lorem ipsum dolor sit amt</h3>
                 <p class="inner">
                     <?= $row['text'] ?>
                 </p>
