@@ -14,12 +14,13 @@ if (!is_logged_in()) {
 </div>
 <div class="border-black">
     <form action="include/crud_action.php" id="saveForm" method="post" class="row g-3 needs-validation p-2" novalidate>
+        <input type="hidden" name="_token" value="generated_csrf_token_here">
         <div class="col-md-3">
             <label for="datum" class="form-label">datum(TT/MM/YYYY)</label><br />
             <div class="block">
-                <input type="number" min="1" max="31" id="dattag" name="dattag" class="form-control" style="width:60px;display:inline-block;" placeholder="DD" required />
-                <input type="number" min="1" max="12" id="datmonat" name="datmonat" class="form-control" style="width:60px;display:inline-block;" placeholder="MM" required />
-                <input type="number" min="2024" max="2100" id="datyear" name="datyear" class="form-control" style="width:60px;display:inline-block;" placeholder="YYYY" required />
+                <input type="text" min="1" max="31" id="dattag" name="dattag" class="form-control" style="width:60px;display:inline-block;" placeholder="DD" required />
+                <input type="text" min="1" max="12" id="datmonat" name="datmonat" class="form-control" style="width:60px;display:inline-block;" placeholder="MM" required />
+                <input type="text" min="2024" max="2100" id="datyear" name="datyear" class="form-control" style="width:60px;display:inline-block;" placeholder="YYYY" required />
             </div>
             <div id="error_day" class="text-danger"></div>
             <div id="error_month" class="text-danger"></div>
