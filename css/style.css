@@ -90,7 +90,7 @@ main::before {
   .nav-main {
     width: 200px;
     padding-left: 1rem;
-    padding-top: 1rem;
+    padding-top: 3rem;
   }
 }
 
@@ -156,36 +156,9 @@ li a:hover {
   word-wrap: break-word;
 }
 
-/* .fetch .col-md-3 {
-  overflow: hidden;
-} */
-
 /* ******* Menuüpunkt-1  ******* */
-.calander {
-  background-color: #00f;
-  /* background-color: var(--white-color); */
-}
 .block {
   box-sizing: border-box;
-}
-
-#labelinput {
-  /* background-color: #fafafa; */
-  border: 0;
-  background-color: red !important;
-  box-shadow: 0 0 3px rgba(120, 3, 3, 0.3);
-  /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); */
-  transition: 0.3s box-shadow;
-}
-#labelinput:hover {
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  stop-opacity: initial;
-}
-
-#mtable {
-  border: 2px solid #000;
-  background-color:#0808;
-  /* background-color: var(--white-color); */
 }
 
 .fixed100 {
