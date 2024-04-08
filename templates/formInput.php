@@ -26,6 +26,7 @@ if (!is_logged_in()) {
                 </div>
                 <div class="col py-sm-1">
                     <select id="datmonat" name="datmonat" class="form-control" required style="width:60px;display:inline-block;">
+                        <option selected value="">Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -42,6 +43,7 @@ if (!is_logged_in()) {
                 </div>
                 <div class="col py-sm-1">
                     <select id="datyear" class="form-control" name="datyear" required style="width:60px;display:inline-block;">
+                        <option selected value="">Year</option>
                         <option value="2020">2024</option>
                         <option value="2021">2025</option>
                         <option value="2022">2026</option>
@@ -50,7 +52,6 @@ if (!is_logged_in()) {
                         <option value="2022">2029</option>
                         <option value="2022">2023</option>
                     </select>
-
                 </div>
             </div>
             <div id="error_day" class="text-danger"></div>
