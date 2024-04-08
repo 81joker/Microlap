@@ -8,6 +8,9 @@ if (!is_logged_in()) {
     login_error_redirect();
 }
 ?>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <div class="alert_messagediv alert alert-success fade hide">
     <span class="alert_messagetext"></span>
     <button class="close closebtnalert" type="button">&times;</button>
@@ -17,10 +20,38 @@ if (!is_logged_in()) {
         <input type="hidden" name="_token" value="generated_csrf_token_here">
         <div class="col-md-3">
             <label for="datum" class="form-label">datum(TT/MM/YYYY)</label><br />
-            <div class="block">
-                <input type="text" min="1" max="31" id="dattag" name="dattag" class="form-control" style="width:60px;display:inline-block;" placeholder="DD" required />
-                <input type="text" min="1" max="12" id="datmonat" name="datmonat" class="form-control" style="width:60px;display:inline-block;" placeholder="MM" required />
-                <input type="text" min="2024" max="2100" id="datyear" name="datyear" class="form-control" style="width:60px;display:inline-block;" placeholder="YYYY" required />
+            <div class="row row-cols-auto row-cols-lg-3 gap-1">
+                <div class="col py-sm-1">
+                    <input type="text" min="1" max="31" id="dattag" name="dattag" class="form-control" style="width:60px;display:inline-block;" placeholder="DD" required />
+                </div>
+                <div class="col py-sm-1">
+                    <select id="datmonat" name="datmonat" class="form-control" required style="width:60px;display:inline-block;">
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                </div>
+                <div class="col py-sm-1">
+                    <select id="datyear" class="form-control" name="datyear" required style="width:60px;display:inline-block;">
+                        <option value="2020">2024</option>
+                        <option value="2021">2025</option>
+                        <option value="2022">2026</option>
+                        <option value="2022">2027</option>
+                        <option value="2022">2028</option>
+                        <option value="2022">2029</option>
+                        <option value="2022">2023</option>
+                    </select>
+
+                </div>
             </div>
             <div id="error_day" class="text-danger"></div>
             <div id="error_month" class="text-danger"></div>
@@ -50,8 +81,23 @@ if (!is_logged_in()) {
 </div>
 <script>
     $(document).ready(function() {
+        $("#dattag").datepicker({
+            dateFormat: 'mm',
+            onSelect: function(dateText, inst) {
+                $(this).val(dateText);
+            }
+        });
+        $("#datmonat").change(function() {
+            var selectedMonth = $(this).val();
+            console.log("Selected month: " + selectedMonth);
+        });
+        $("#datyear").change(function() {
+            var selectedYear = $(this).val();
+            console.log("Selected year: " + selectedYear);
+        });
+
         $('#saveForm').on('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault();
 
             // Validate the form manually
             var descInput = $('#desc');
