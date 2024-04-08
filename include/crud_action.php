@@ -29,6 +29,16 @@ if (isset($_POST['dattag']) && isset($_POST['datmonat']) && isset($_POST['datyea
     exit; 
   }
   
+  if (empty($_POST['datmonat'])) {
+    echo 'Please select a reminder.';
+    exit; 
+  }
+  
+  if (empty($_POST['datyear'])) {
+    echo 'Please select a reminder.';
+    exit; 
+  }
+  
   $sql = "INSERT INTO `Kalender`( `description`, `erinnerung`, `datum`, `dattag`, `datyear`, `fulldate`)
 	VALUES ('$description','$dateernneurng', '$datemonat', '$datetag', '$dateyear', '$fulldate')";
   if ($db->query($sql) === TRUE) {
